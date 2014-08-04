@@ -1,0 +1,23 @@
+{
+  "name": "pom",
+  "version": "0.0.1",
+  "description": "A pomodoro timer",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "pomodoro",
+    "timer"
+  ],
+  "author": "Christian Bankester <cmbankester@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "commander": "^2.3.0",
+    "ff": "^0.2.0"
+  },
+  "bin": {
+    "pom": "lib/index.js"
+  }
+}
