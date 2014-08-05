@@ -4,7 +4,7 @@ exec = require('child_process').exec
  * _displayNotification
  * Displays a notification to the user via notification center
  * @param    {event} String -- One of ['begin', 'break', 'end']
- * @param    {opts} Object -- {task_name: String, break_duration: Number}
+ * @param    {opts} Object -- {task_name: String, break_duration: Number, begin_event_name: String, break_event_name: String}
  * @callback {cb} (err, text_response)
  * @return   {void(0)}
 */
@@ -14,20 +14,20 @@ _displayNotification = function(event, opts, cb)
     switch (event) {
       case "begin":
       case "start":
-        return "Begin Task";
+        return opts.begin_event_name;
       case "break":
         duration = opts.break_duration
         if (duration > 120 || duration % 60 === 0)
-          return "Take a Break for " + (Math.round(duration / 60)) + "m";
+          return opts.break_event_name + " (" + (Math.round(duration / 60)) + "m)";
         else
-          return "Take a Break for " + (duration + "s");
+          return opts.break_event_name + " (" + (duration + "s)");
       case "end":
       case "stop":
         return "Stop Task";
     }
   })();
 
-  var osascript_cmd = 'display notification "' + opts.task_name + '" with title "Pom Timer" subtitle "' + subtitle + '" sound name "Beep"';
+  var osascript_cmd = 'display notification "' + subtitle + '" with title "Pom Timer" subtitle "' + opts.task_name + '" sound name "Beep"';
   var cmd = 'osascript -e "' + osascript_cmd.replace(/"/gi, '\\"') + '"';
 
   exec(cmd, cb);
@@ -57,7 +57,8 @@ module.exports = {
     times_to_recur: 4,
     time_to_prepare: 60,
     verbose: false,
-    task_name: "Your Task"
+    task_name: "Your Task",
+    begin_event_name: "Begin Task"
   },
   displayNotificationFn: _displayNotification
 };
