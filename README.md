@@ -17,13 +17,15 @@ Usage: pom [options] [Task Name]
 
 Options:
 
-  -h, --help                      this usage information
+  -h, --help                      output usage information
   -V, --version                   output the version number
   -u, --task-duration [number]    Specify duration of work in seconds
   -b, --break-duration [number]   Specify the duration of the break in seconds
   -r, --times-to-recur [number]   Specify how many work-break cycles to recur until stopping
   -p, --time-to-prepare [number]  Specify the time-to-prepare in minutes
-  # TODO --path-to-config                Specify the path the config js file [~/.pom.js]
+  # TODO --path-to-config                Specify the path the config.js file [~/.pom.js]
+  --begin-event-name [text]       Specify the text that should appear when beginning a new section of task [Begin Task]
+  --break-event-name [text]       Specify the text that should appear when taking a break [Take a break]
   # TODO -d, --daemonize                 Run the timer in the background
   -v, --verbose                   Enable logging to the console
 
