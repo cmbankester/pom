@@ -15,6 +15,7 @@
   "license": "MIT",
   "dependencies": {
     "commander": "^2.3.0",
+    "daemon": "^1.1.0",
     "ff": "^0.2.0"
   },
   "bin": {

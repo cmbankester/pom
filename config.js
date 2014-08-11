@@ -8,7 +8,7 @@ exec = require('child_process').exec
  * @callback {cb} (err, text_response)
  * @return   {void(0)}
 */
-_displayNotification = function(event, opts, cb)
+function _displayNotification(event, opts, cb)
 {
   var subtitle = (function() {
     switch (event) {
@@ -58,7 +58,8 @@ module.exports = {
     time_to_prepare: 60,
     verbose: false,
     task_name: "Your Task",
-    begin_event_name: "Begin Task"
+    begin_event_name: "Begin task",
+    break_event_name: "Take a break"
   },
   displayNotificationFn: _displayNotification
 };
